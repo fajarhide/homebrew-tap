@@ -1,8 +1,8 @@
 class Omni < Formula
   desc "Semantic Distillation Engine for the Agentic Era"
   homepage "https://github.com/fajarhide/omni"
-  url "https://github.com/fajarhide/omni/archive/refs/tags/v0.3.4.tar.gz"
-  sha256 "7e651aedb9ff954796ae403989fecdf8be93d4c73ffb909f3ce7fcf8475cbc5c"
+  url "https://github.com/fajarhide/omni/archive/refs/tags/v0.3.5.tar.gz"
+  sha256 "79e0ac1bd3b8979ab5cee67be127e180af9d2fc8596ff8deaedd144711537fce"
   license "MIT"
 
   depends_on "zig" => :build
@@ -20,23 +20,22 @@ class Omni < Formula
     # Install Native Binary
     bin.install "bin/omni"
 
-    # Install Wasm Binary
-    (lib/"omni").install "bin/omni-wasm.wasm"
-
-    # Install MCP Server
-    # Use plain local npm install so devDeps (typescript/tsc) are available for build
+    # Install MCP Server to libexec
     libexec.install "package.json", "package-lock.json", "tsconfig.json", "src"
     cd libexec do
       system "npm", "install"
       system "./node_modules/.bin/tsc"
       system "npm", "prune", "--omit=dev"
     end
-    # Create a wrapper for the MCP server
-    (bin/"omni-mcp").write <<~EOS
-      #!/bin/bash
-      export OMNI_WASM_PATH="#{lib}/omni/omni-wasm.wasm"
-      node "#{libexec}/dist/index.js" "$@"
-    EOS
+
+    # Install Wasm Binary alongside MCP Server so __dirname paths work correctly
+    (libexec/"core").install "bin/omni-wasm.wasm"
+  end
+
+  def post_install
+    # Automatically triggers `omni setup` which will gracefully create 
+    # the ~/.omni/dist/index.js symlink for zero-config integration.
+    system "#{bin}/omni", "setup"
   end
 
   test do
