@@ -17,7 +17,7 @@ brew tap fajarhide/tap
 
 ```sh
 brew install fajarhide/tap/omni
-brew install --cask fajarhide/tap/macmon
+brew install fajarhide/tap/macmon
 ```
 
 MacMon is ad-hoc signed, not notarized. The cask clears the Gatekeeper
