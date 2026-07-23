@@ -11,18 +11,13 @@ cask "macmon" do
 
   app "MacMon.app"
 
+  # MacMon is ad-hoc signed, not notarized. Homebrew quarantines every cask and
+  # (since 6.0) no longer offers --no-quarantine, so without this the first launch
+  # is blocked by Gatekeeper. Clear the flag on the app we just installed.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/MacMon.app"]
+  end
+
   zap trash: "~/Library/Preferences/local.macmon.plist"
-
-  caveats <<~EOS
-    MacMon is ad-hoc signed, not notarized, so Gatekeeper blocks it by default.
-    Install without quarantine so it launches directly:
-
-      brew install --cask fajarhide/tap/macmon --no-quarantine
-
-    If you already installed it, clear the flag once:
-
-      xattr -dr com.apple.quarantine "#{appdir}/MacMon.app"
-
-    Then right-click the menu-bar item and turn on "Open at Login".
-  EOS
 end
