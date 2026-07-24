@@ -1,6 +1,6 @@
 cask "macmon" do
-  version "2.0"
-  sha256 "c007cdef1a0db6c177e8079e462a8703f97d88249edf03c8205e95e8afd44263"
+  version "2.1"
+  sha256 "fdfbd5d59bfb082c75788ff706e9f1479882ebf45eef1e426d635ddc3fd7063e"
 
   url "https://github.com/fajarhide/macmon/releases/download/v#{version}/MacMon.dmg"
   name "MacMon"
