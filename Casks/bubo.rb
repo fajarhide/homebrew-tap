@@ -2,11 +2,11 @@ cask "bubo" do
   version "1.1"
 
   on_arm do
-    sha256 "3ac75e1ecea8c7923065cb2eea7ad97c057eb250194c7a0dca18c8a22e1ee1e1"
+    sha256 "3f6fb7c2ef37f972607360fde53e176fc62090d060f4b46251b3bb8e7a7032e0"
     url "https://github.com/fajarhide/bubo/releases/download/v#{version}/Bubo-apple-silicon.dmg"
   end
   on_intel do
-    sha256 "014c035eaa6d593742dc508f67e81d0043fec3db72a54e961dad25953c3619de"
+    sha256 "1e1fa42c439a01b94b7abda5c795e649146436188796184bdc430f6670e37a62"
     url "https://github.com/fajarhide/bubo/releases/download/v#{version}/Bubo-intel.dmg"
   end
 
