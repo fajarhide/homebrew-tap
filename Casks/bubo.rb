@@ -1,12 +1,12 @@
 cask "bubo" do
-  version "1.1"
+  version "1.2"
 
   on_arm do
-    sha256 "3f6fb7c2ef37f972607360fde53e176fc62090d060f4b46251b3bb8e7a7032e0"
+    sha256 "1533b01961c164f191d4e52fb01f1eb3ebed06b4709d9b3d56088eb768a3d07c"
     url "https://github.com/fajarhide/bubo/releases/download/v#{version}/Bubo-apple-silicon.dmg"
   end
   on_intel do
-    sha256 "1e1fa42c439a01b94b7abda5c795e649146436188796184bdc430f6670e37a62"
+    sha256 "089055c6e4a6e6deed564dc8a7532c835f949e3ea1b4494f986ae97b99d01b47"
     url "https://github.com/fajarhide/bubo/releases/download/v#{version}/Bubo-intel.dmg"
   end
 
@@ -18,9 +18,9 @@ cask "bubo" do
 
   app "Bubo.app"
 
-  # Ad-hoc signed, not notarized. Homebrew quarantines every cask and (since 6.0)
-  # dropped --no-quarantine, so clear the flag ourselves or the first launch is
-  # blocked by Gatekeeper.
+  # Ad-hoc signed, not notarized. Homebrew quarantines every cask and
+  # (since 6.0) dropped --no-quarantine, so clear the flag ourselves or
+  # the first launch is blocked by Gatekeeper.
   postflight do
     system_command "/usr/bin/xattr",
                    args: ["-dr", "com.apple.quarantine", "#{appdir}/Bubo.app"]
