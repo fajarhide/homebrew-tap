@@ -1,12 +1,12 @@
 cask "bubo" do
-  version "1.4"
+  version "1.5"
 
   on_arm do
-    sha256 "99b935f48b15e79960caadb70e8a250ac747f100e42e02ab593941bd563db123"
+    sha256 "f40c70b4715ab1be09a963de6474741418460b4ecf103a93b2ee3aab5f0e6ce1"
     url "https://github.com/fajarhide/bubo/releases/download/v#{version}/Bubo-apple-silicon.dmg"
   end
   on_intel do
-    sha256 "836e187fb539bbec656683f3062139cc6af3e28b2b0ea8fa7ea24cfeb76eb765"
+    sha256 "372886f8a037eb891005d5f9e053884cbb0e113587d5c3f2b9fadad7d8d97bc7"
     url "https://github.com/fajarhide/bubo/releases/download/v#{version}/Bubo-intel.dmg"
   end
 
@@ -26,5 +26,8 @@ cask "bubo" do
                    args: ["-dr", "com.apple.quarantine", "#{appdir}/Bubo.app"]
   end
 
-  zap trash: "~/Library/Preferences/local.bubo.plist"
+  zap trash: [
+    "~/Library/Preferences/local.bubo.plist",
+    "~/Library/Application Support/Bubo",
+  ]
 end
