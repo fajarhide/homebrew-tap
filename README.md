@@ -10,13 +10,13 @@ brew tap fajarhide/tap
 
 | Command | Kind | What it is |
 |---|---|---|
-| [`omni`](https://github.com/fajarhide/omni) | formula | Semantic signal engine CLI. Less noise, more signal. macOS and Linux. |
+| [`contexere`](https://github.com/fajarhide/contexere) | formula | The context layer for AI coding agents: less noise, fewer tokens, nothing lost. Formerly OMNI; `omni` installs the same thing. macOS and Linux. |
 | [`bubo`](https://github.com/fajarhide/bubo) | cask | Menu-bar monitor that flags the app hogging your CPU and RAM. macOS 13+. |
 
 ## Install
 
 ```sh
-brew install fajarhide/tap/omni
+brew install fajarhide/tap/contexere
 brew install fajarhide/tap/bubo
 ```
 
